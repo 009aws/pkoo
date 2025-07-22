@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <title>Contact | Infosoft Typing</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon_64x64 (1).png">
+</head>
+<body>
+    <header class="hero small-hero">
+        <div class="container">
+            <nav class="navbar">
+    <div class="container nav-flex">
+        <div class="logo"><img src="favicon_64x64 (1).png" alt="Infosoft Logo" style="vertical-align:middle; margin-right:10px; border-radius:8px; width:42px; height:42px;">Infosoft Typing</div>
+        <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="hero-content">
+                <h1 style="color:#003366;">Contact Us</h1>
+            </div>
+        </div>
+    </header>
+    <section class="contact">
+        <div class="container">
+            <h2 style="color:#003366;">Get in Touch</h2>
+            <form class="contact-form" action="https://formspree.io/f/xwkrvqqn" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <button type="submit" class="btn-primary">Send Message</button>
+            </form>
+            <div class="contact-info">
+                <p><strong>Address:</strong> <a href="https://maps.google.com/?q=AD+DHAMEEMA+4TH+STREET,+NEAR+LAL+MARKET,+MUSSAFAH+10" target="_blank" style="color:#003366;text-decoration:underline;">AD DHAMEEMA 4TH STREET, NEAR LAL MARKET, MUSSAFAH 10</a></p>
+                <p><strong style="color:#003366;">Phone:</strong> <span style="color:#003366;">05473132286</span></p>
+                <p><strong style="color:#003366;">Email:</strong> <a href="mailto:infotyping1120@gmail.com" style="color:#003366;">infotyping1120@gmail.com</a></p>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Infosoft Typing and Documentation Clearing. All rights reserved.</p>
+        </div>
+    </footer>
+    <!-- Floating Side Chatbot Button -->
+    <button id="side-ai-btn" style="position:fixed;right:12px;bottom:28px;z-index:9999;background:#003366;color:#fff;border:none;border-radius:50%;width:44px;height:44px;box-shadow:0 4px 16px rgba(0,0,0,0.18);font-size:1.7rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s;">
+      <span style="font-size:1.7rem;">🤖</span>
+    </button>
+    <!-- Side Chatbot Panel -->
+    <div id="side-chat-container" style="max-width:300px;width:92vw;position:fixed;bottom:32px;top:auto;right:-320px;height:420px;background:#fff;box-shadow:-2px 0 16px rgba(0,0,0,0.18);z-index:99999;transition:right 0.4s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;border-radius:16px 0 0 16px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 20px;background:#003366;color:#fff;">
+            <span style="font-size:1.2rem;font-weight:600;">PK - AI Chatbot</span>
+            <button id="close-side-chat" style="background:none;border:none;color:#fff;font-size:1.6rem;cursor:pointer;">&times;</button>
+        </div>
+        <div id="side-chat-box" style="flex:1;border:none;height:auto;overflow-y:auto;padding:10px 0 10px 10px;margin-bottom:10px;background:#f9f9f9;"></div>
+        <div style="display:flex;padding:10px 10px 20px 10px;gap:8px;">
+            <input id="side-user-input" type="text" placeholder="Type your message..." style="flex:1;padding:6px 10px;border:1px solid #ccc;border-radius:4px;">
+            <button id="side-send-btn" style="background:#003366;color:#fff;border:none;padding:0 18px;border-radius:4px;">Send</button>
+        </div>
+    </div>
+    <script src="chatbot.js"></script>
+    <script>
+      // Show/hide side chatbot panel
+      const sideBtn = document.getElementById('side-ai-btn');
+      const sideChatPanel = document.getElementById('side-chat-container');
+      const closeSideBtn = document.getElementById('close-side-chat');
+      sideBtn.onclick = function() {
+        sideChatPanel.style.right = '0';
+        showSideWelcomeIfNeeded();
+      }
+      closeSideBtn.onclick = function() {
+        sideChatPanel.style.right = '-320px';
+      }
+      // Simple logic for side chatbot (clone of main chatbot)
+      const sideChatBox = document.getElementById('side-chat-box');
+      const sideUserInput = document.getElementById('side-user-input');
+      const sideSendBtn = document.getElementById('side-send-btn');
+      function getSideTime() {
+        const d = new Date();
+        return d.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+      }
+      function appendSideMsg(text, isBot) {
+        const msgDiv = document.createElement('div');
+        msgDiv.className = isBot ? 'bot-msg' : 'user-msg';
+        msgDiv.innerHTML = `
+          <div class="msg-bubble">
+            <span class="avatar">${isBot ? '<img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Sales Assistant" style="width:32px;height:32px;border-radius:50%;vertical-align:middle;margin-right:4px;object-fit:cover;"> PK' : '🧑‍💼'}</span>
+            <span class="msg-text">${text}</span>
+            <span class="msg-time">${getSideTime()}</span>
+          </div>
+        `;
+        sideChatBox.appendChild(msgDiv);
+        sideChatBox.scrollTop = sideChatBox.scrollHeight;
+      }
+      // Show welcome message if empty when opened
+      function showSideWelcomeIfNeeded() {
+        if (!sideChatBox.querySelector('.bot-msg')) {
+          appendSideMsg("Hi, I'm PK. How can I help you today?", true);
+        }
+      }
+      function getBotReplySide(message) {
+        return window.getBotReply(message);
+      }
+      sideSendBtn.onclick = function() {
+        const userMsg = sideUserInput.value.trim();
+        if (!userMsg) return;
+        appendSideMsg(userMsg, false);
+        sideUserInput.value = '';
+        setTimeout(() => {
+          appendSideMsg(getBotReplySide(userMsg), true);
+        }, 500);
+      }
+      sideUserInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') sideSendBtn.click();
+      });
+    </script>
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/971547313286" target="_blank" id="whatsapp-btn" style="position:fixed;left:14px;bottom:28px;z-index:9999;background:#25d366;color:#fff;border:none;border-radius:50%;width:52px;height:52px;box-shadow:0 4px 16px rgba(0,0,0,0.18);display:flex;align-items:center;justify-content:center;transition:background 0.2s;font-size:2.2rem;text-decoration:none;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 32 32" fill="white"><path d="M16 3C9.383 3 4 8.383 4 15c0 2.492.82 4.797 2.34 6.77L4.06 29.06a1 1 0 0 0 1.13 1.13l7.29-2.28A12.93 12.93 0 0 0 16 27c6.617 0 12-5.383 12-12S22.617 3 16 3zm0 22c-1.67 0-3.3-.33-4.82-.98l-.34-.14-5.18 1.62 1.62-5.18-.14-.34A9.96 9.96 0 0 1 6 15c0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 10-10 10zm5.25-7.02c-.287-.144-1.7-.84-1.96-.936-.26-.096-.45-.144-.64.144-.19.287-.74.936-.91 1.128-.17.192-.33.216-.617.072-.287-.144-1.21-.446-2.3-1.422-.85-.758-1.426-1.693-1.594-1.98-.17-.287-.018-.442.127-.586.13-.13.287-.336.43-.504.144-.168.192-.287.288-.478.096-.192.048-.36-.024-.504-.072-.144-.64-1.54-.88-2.11-.232-.558-.47-.482-.64-.49-.168-.007-.36-.009-.552-.009s-.504.072-.768.36c-.264.288-1.008.984-1.008 2.4 0 1.416 1.032 2.784 1.176 2.976.144.192 2.032 3.12 4.928 4.248.69.297 1.228.474 1.648.606.692.22 1.324.188 1.824.114.556-.082 1.7-.694 1.94-1.364.24-.67.24-1.244.168-1.364-.072-.12-.264-.192-.552-.336z"/></svg>
+    </a>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <title>Blogs | Infosoft Typing</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon_64x64 (1).png">
+</head>
+<body>
+    <header class="hero small-hero">
+        <div class="container">
+            <nav class="navbar">
+                <div class="container nav-flex">
+                    <div class="logo"><img src="favicon_64x64 (1).png" alt="Infosoft Logo" style="vertical-align:middle; margin-right:10px; border-radius:8px; width:42px; height:42px;">Infosoft Typing</div>
+                    <ul class="nav-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="blogs.html" class="active">Blogs & News</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="hero-content">
+                <h1 style="color:#003366;">Blogs & News</h1>
+                <p>Latest updates, guides, and insights for business, documentation, and government services in the UAE.</p>
+            </div>
+        </div>
+    </header>
+    <section class="blogs-news">
+        <div class="container">
+            <h2 class="section-title" style="color:#003366;">Latest Blogs & News</h2>
+            <div class="blogs-list">
+                <div class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" data-alt="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" class="toggle-img" alt="Business Setup News">
+                    <h3>Abu Dhabi Family Visa Requirements: Everything You Need to Know</h3>
+                    <p>Discover the latest requirements and procedures for obtaining a family visa in Abu Dhabi, including tips for a smooth application.</p>
+                </div>
+                <div class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80" data-alt="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80" class="toggle-img" alt="Cafeteria Business Blog">
+                    <h3>How to Open a Cafeteria in Abu Dhabi: Step-by-Step Guide</h3>
+                    <p>Learn the essential steps, paperwork, and legal requirements for starting a cafeteria business in Abu Dhabi.</p>
+                </div>
+                <div class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=400&q=80" data-alt="https://images.unsplash.com/photo-1465101178521-c1a9136a3fdc?auto=format&fit=crop&w=400&q=80" class="toggle-img" alt="Business Zone News">
+                    <h3 style="color:#003366;">Why Set Up Your Business in Masdar City?</h3>
+                    <p>Explore the benefits of establishing your company in Masdar City, Abu Dhabi’s innovative and sustainable business hub.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="container">
+            <p style="color:#003366;">&copy; 2025 Infosoft Typing and Documentation Clearing. All rights reserved. | <span style="color:#003366;">Phone: 05473132286</span> | <span style="color:#003366;">Email: <a href="mailto:infotyping1120@gmail.com" style="color:#003366;">infotyping1120@gmail.com</a></span></p>
+        </div>
+    </footer>
+    <script>
+    document.querySelectorAll('.toggle-img').forEach(img => {
+      img.addEventListener('click', function() {
+        const current = img.src;
+        img.src = img.dataset.alt;
+        img.dataset.alt = current;
+        // Add border flash
+        img.style.boxShadow = '0 0 0 4px red';
+        setTimeout(() => { img.style.boxShadow = ''; }, 300);
+      });
+    });
+    </script>
+</body>
+</html>
